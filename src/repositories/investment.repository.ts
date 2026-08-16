@@ -1,4 +1,3 @@
-import { investmentStatus } from "../constants/investmentStatus.js";
 import type { IInvestmentpayload } from "../interfaces/IInvestmentPayload.interface.js";
 import type { ISortOptions } from "../interfaces/ISortOptions.interface.js";
 import { Investment } from "../models/investment.model.js";

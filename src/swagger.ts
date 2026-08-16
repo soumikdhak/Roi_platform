@@ -7,14 +7,17 @@ const doc = {
   info: {
     version: 'v1.0.0',
     title: 'ROI API',
-    description: 'Investment and referralbased platform using the MERN Stack'
+    description: 'Investment and referral based platform using the MERN Stack'
   },
   host: `localhost:${process.env.PORT || 8000}`,
   basePath: '/',
   schemes: ['http', 'https'],
 };
 
-const outputFile = './swagger-output.json';
-const endpointFiles = ['src/app.ts'];
+const outputFile = './src/swagger-output.json';
+
+const endpointFiles = [
+  './src/app.ts'
+];
 
 swaggerAutogen()(outputFile, endpointFiles, doc);

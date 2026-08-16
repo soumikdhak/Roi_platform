@@ -3,21 +3,56 @@
   "info": {
     "version": "v1.0.0",
     "title": "ROI API",
-    "description": "Investment and referralbased platform using the MERN Stack"
+    "description": "Investment and referral based platform using the MERN Stack"
   },
   "host": "localhost:8000",
   "basePath": "/",
-  "schemes": [
-    "http",
-    "https"
-  ],
+  "schemes": ["http", "https"],
   "paths": {
     "/api/v1/users/register": {
       "post": {
-        "description": "",
+        "description": "Creates a new user account.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": ["fullName", "email", "mobileNumber", "password"],
+              "properties": {
+                "fullName": {
+                  "type": "string",
+                  "example": "Soumik Dhak"
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "example": "soumik@gmail.com"
+                },
+                "mobileNumber": {
+                  "type": "string",
+                  "example": "9876543210"
+                },
+                "password": {
+                  "type": "string",
+                  "format": "password",
+                  "example": "Password@123"
+                },
+                "referrelCode": {
+                  "type": "string",
+                  "example": "REF0001"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "User registered successfully"
+          },
+          "400": {
+            "description": "Invalid input or user already exists"
           }
         }
       }
@@ -99,12 +134,67 @@
         }
       }
     },
-    "/api/v1/investments/createInvestment": {
-      "post": {
+    "/api/v1/users/chartData": {
+      "get": {
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/investments/createInvestment": {
+      "post": {
+        "description": "Creates a new investment for the authenticated user.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "amount",
+                "planDetails",
+                "endDate",
+                "dailyROIPercent"
+              ],
+              "properties": {
+                "amount": {
+                  "type": "number",
+                  "example": 10000,
+                  "description": "Amount to invest"
+                },
+                "planDetails": {
+                  "type": "string",
+                  "example": "6 Months Investment Plan",
+                  "description": "Details of the selected investment plan"
+                },
+                "endDate": {
+                  "type": "string",
+                  "format": "date",
+                  "example": "2027-02-16",
+                  "description": "Investment end date"
+                },
+                "dailyROIPercent": {
+                  "type": "number",
+                  "example": 1.5,
+                  "description": "Daily ROI percentage"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Investment created successfully"
+          },
+          "400": {
+            "description": "Invalid investment data or insufficient wallet balance"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
