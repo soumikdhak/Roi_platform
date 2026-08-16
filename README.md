@@ -78,6 +78,23 @@ Create a `.env` file in the backend root with the following:
 |---|---|---|---|
 | POST | `/api/v1/RLI/genarateRli` | generate daily referrel level income based on ROI | Yes |
 | GET | `api/v1/RLI/rlis?date=&roiCode=&sort=&page=&limit=` | get list of Referral incomes with pagination(filtered based on date, investment code, page, limit) | Yes |
+                    
+### Viewing API documentation (Swagger)
+
+Generate the Swagger spec, then start the server:
+
+```bash
+npm run swagger
+npm run dev
+```
+
+Once running, open the interactive API docs at:
+
+```
+http://localhost:8000/api_docs
+```
+ ***get all endpoints***
+
 
 ## 4. Assumptions made during development
  
