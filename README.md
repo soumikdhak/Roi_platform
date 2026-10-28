@@ -7,7 +7,7 @@
 ## 1. Project setup steps
 ```cmd
 git clone https://github.com/soumikdhak/Roi_platform.git
-cd roi-platform-backend
+cd Roi_platform
 npm install
 ```
 
